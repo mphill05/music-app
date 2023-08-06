@@ -14,7 +14,7 @@ const Footer = () => {
       setErrorMessage('Please enter your email.');
     } else {
       // Perform submit logic here
-      setErrorMessage('');
+      setErrorMessage('Please enter a valid email.');
     }
   };
 
@@ -23,7 +23,7 @@ const Footer = () => {
       setErrorMessage('Please enter your email.');
     } else {
       // Perform submit logic here
-      setErrorMessage('');
+      setErrorMessage('Please enter a valid email.');
     }
   };
 
