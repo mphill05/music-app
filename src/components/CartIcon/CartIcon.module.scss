@@ -1,0 +1,28 @@
+.cartIcon {
+  position: relative;
+  cursor: pointer;
+}
+
+.itemCount {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Slide out side menu styles */
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Initially hide the side menu */
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  transition: right 0.3s; /* Animation effect */
+
+  &.visible {
+    right: 0;
+  }
+}
