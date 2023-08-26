@@ -10,6 +10,8 @@ $white: #fff;
   background-color: transparent;
   color: $black;
   z-index: 1;
+  width: 90%;
+  margin: auto;
 
   .logo {
     font-size: 1.5rem;
@@ -43,7 +45,7 @@ $white: #fff;
     position: fixed;
     top: -16px;
     right: 0;
-    width: 80%;
+    // width: 80%;
     height: 100vh;
     background-color: rgba($black, 0.8);
     z-index: 1;
@@ -60,7 +62,7 @@ $white: #fff;
       a {
         color: $white;
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 1rem;
         padding: 0 1rem;
 
