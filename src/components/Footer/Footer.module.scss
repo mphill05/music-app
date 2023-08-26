@@ -1,0 +1,70 @@
+$black: #000;
+$white: #fff;
+$red: #ff0000;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem;
+
+  @media (min-width: 769px) {
+    width: 90%;
+  }
+}
+
+.input {
+  flex: 1;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid $black;
+  padding: 0.5rem;
+}
+
+.button {
+  border-radius: 0 20px 20px 0;
+  border: 1px solid $black;
+  padding: 0.5rem 1rem;
+  background-color: $black;
+  color: $white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $white;
+    color: $black;
+  }
+}
+
+.error {
+  display: block;
+  color: $red;
+  margin-top: 0.5rem;
+}
+
+.footerMenu {
+  display: flex;
+  li {
+    list-style: none;
+    padding: 0.5rem 1rem;
+
+    a {
+      text-decoration: none;
+      color: $black;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      padding: 0.2rem;
+    }
+  }
+}

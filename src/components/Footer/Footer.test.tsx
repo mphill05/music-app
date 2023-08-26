@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import styles from './Footer.module.scss';
-import Link from 'next/link';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -48,17 +47,6 @@ const Footer = () => {
             Submit
           </button>
         </form>
-        <ul className={styles.footerMenu}>
-          <li>
-            <Link href="/music">Music</Link>
-          </li>
-          <li>
-            <Link href="/store">Store</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
-        </ul>
       </div>
     </footer>
   );
