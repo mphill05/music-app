@@ -1,0 +1,13 @@
+.productDetails {
+}
+
+.sizeRow,
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sizeRow span,
+.priceRow span {
+  margin: 0 10px;
+}
