@@ -50,6 +50,9 @@ const Footer = () => {
         </form>
         <ul className={styles.footerMenu}>
           <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
             <Link href="/music">Music</Link>
           </li>
           <li>

@@ -1,12 +1,24 @@
-export const dynamic = 'force-static';
+import { Card } from '@/components/Card/Card';
+import { songs } from '../../data/songs';
+import styles from './page.module.scss';
 
-import { Metadata } from 'next';
+interface Song {
+  imageUrl: string;
+  title: string;
+}
 
-export const metadata: Metadata = {
-  title: 'Music',
-  description: 'Music from {music artist}',
-};
-
-export default async function Music() {
-  return <div>Music Page</div>;
+export default function Music() {
+  return (
+    <div className={styles.cardContainer}>
+      {songs.map((song: Song, index: number) => (
+        <Card
+          key={index}
+          imageUrl={song.imageUrl}
+          title={song.title}
+          height={250}
+          width={250}
+        />
+      ))}
+    </div>
+  );
 }
