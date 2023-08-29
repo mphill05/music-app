@@ -1,0 +1,74 @@
+.socialMediaContainer {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+
+  a {
+    display: block;
+    margin-bottom: 20px;
+    transition: opacity 0.3s ease;
+    color: black;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.instagram,
+.facebook,
+.twitter,
+.soundcloud,
+.spotify,
+.apple,
+.youtube,
+.bandcamp {
+  transition: all 0.4s ease;
+}
+
+.instagram:hover {
+  color: #e1306c;
+  transform: scale(1.6);
+}
+
+.facebook:hover {
+  color: #4267b2;
+  transform: scale(1.6);
+}
+
+.twitter:hover {
+  color: #1da1f2;
+  transform: scale(1.6);
+}
+
+.soundcloud:hover {
+  color: #ff7700;
+  transform: scale(1.6);
+}
+
+.spotify:hover {
+  color: #1db954;
+  transform: scale(1.6);
+}
+
+.apple:hover {
+  color: #555555;
+  transform: scale(1.6);
+}
+
+.youtube:hover {
+  color: #ff0000;
+  transform: scale(1.6);
+}
+
+.bandcamp:hover {
+  color: #629aa9;
+  transform: scale(1.6);
+}
