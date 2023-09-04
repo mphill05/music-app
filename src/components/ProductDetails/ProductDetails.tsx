@@ -1,16 +1,23 @@
+import Image from 'next/image';
+
 interface ProductDetailsProps {
   product: any;
   type: 'music' | 'store';
 }
 
-export const ProductDetails: React.FC<ProductDetailsProps> = ({
-  product,
-  type,
-}) => {
+export const ProductDetails = ({ product, type }: ProductDetailsProps) => {
+  if (!product) {
+    return <div>Loading...</div>;
+  }
   if (type === 'music') {
     return (
       <div>
-        <img src={product.imageUrl} alt={product.title} />
+        <Image
+          src={product.imageUrl}
+          alt={product.title}
+          width={500}
+          height={500}
+        />
         <div>
           <h1>{product.title}</h1>
           <p>Release Date: {product.releaseDate}</p>
@@ -28,7 +35,12 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
   } else if (type === 'store') {
     return (
       <div>
-        <img src={product.imageUrl} alt={product.title} />
+        <Image
+          src={product.imageUrl}
+          alt={product.title}
+          width={500}
+          height={500}
+        />
         <div>
           <h1>{product.title}</h1>
           <p>Price: {product.price}</p>
@@ -41,6 +53,4 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({
       </div>
     );
   }
-
-  return null;
 };
