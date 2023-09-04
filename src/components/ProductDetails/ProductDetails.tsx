@@ -1,58 +1,56 @@
-import React from 'react';
-import styles from './ProductDetails.module.scss';
+import Image from 'next/image';
 
 interface ProductDetailsProps {
-  name: string;
+  product: any;
   type: 'music' | 'store';
-  streamingLinks?: string[];
-  buyLinks?: string[];
-  sizes?: string[];
-  prices?: number[];
-  onBuy?: () => void;
 }
 
-const ProductDetails = ({
-  name,
-  type,
-  streamingLinks,
-  buyLinks,
-  sizes,
-  prices,
-  onBuy,
-}) => {
-  return (
-    <div className={styles.productDetails}>
-      {type === 'music' && (
+export const ProductDetails = ({ product, type }: ProductDetailsProps) => {
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+  if (type === 'music') {
+    return (
+      <div>
+        <Image
+          src={product.imageUrl}
+          alt={product.title}
+          width={500}
+          height={500}
+        />
         <div>
-          <h2>Stream:</h2>
-          <ul>
-            {streamingLinks?.map((link, index) => (
-              <li key={index}>
-                <a href={link} target="_blank" rel="noopener noreferrer">
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <h1>{product.title}</h1>
+          <p>Release Date: {product.releaseDate}</p>
+          <button>Buy on Apple Music</button>
+          <button>Buy on Beatport</button>
+          <button>Buy on Bandcamp</button>
         </div>
-      )}
-
-      {type === 'store' && (
         <div>
-          <h2>Sizes:</h2>
-          <div className={styles.sizeRow}>
-            {sizes?.map((size, index) => (
-              <span key={index}>{size}</span>
-            ))}
-          </div>
-          <div className={styles.priceRow}>
-            {prices?.map((price, index) => (
-              <span key={index}>${price}</span>
-            ))}
-          </div>
-          <button onClick={onBuy}>Buy</button>
+          <h2>Stream</h2>
+          <button>Spotify</button>
+          <button>Apple Music</button>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  } else if (type === 'store') {
+    return (
+      <div>
+        <Image
+          src={product.imageUrl}
+          alt={product.title}
+          width={500}
+          height={500}
+        />
+        <div>
+          <h1>{product.title}</h1>
+          <p>Price: {product.price}</p>
+          <button>S</button>
+          <button>M</button>
+          <button>L</button>
+          <button>XL</button>
+          <button>Buy</button>
+        </div>
+      </div>
+    );
+  }
 };
