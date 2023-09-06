@@ -34,6 +34,7 @@ interface Item {
   id: string;
   imageUrl: string;
   title: string;
+  description: string;
   price: number;
 }
 
@@ -92,16 +93,30 @@ export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
                 </motion.div>
               </Link>
               <motion.h1 variants={fadeInUp}>{item.title}</motion.h1>
+              <motion.p variants={fadeInUp}>{item.description}</motion.p>
+              <motion.div variants={fadeInUp} className={styles.sizes}>
+                <div className={styles.sizeLayout}>
+                  <div className={styles.sizeCircle}>S</div>
+                  <div className={styles.sizeCircle}>M</div>
+                  <div className={styles.sizeCircle}>L</div>
+                  <div className={styles.sizeCircle}>XL</div>
+                  <div className={styles.sizeCircle}>2XL</div>
+                  <div className={styles.sizeCircle}>3XL</div>
+                </div>
+              </motion.div>
+              <motion.h3 variants={fadeInUp}>Quantity</motion.h3>
               <motion.div variants={fadeInUp} className={styles.qtyPrice}>
                 <div className={styles.qty}>
                   <div className={styles.minus}>-</div>
                   <div className={styles.amount}>1</div>
                   <div className={styles.add}>+</div>
                 </div>
-                <span className={styles.price}>${item.price}</span>
               </motion.div>
+              <motion.p variants={fadeInUp} className={styles.price}>
+                <h2 className={styles.price}>${item.price}</h2>
+              </motion.p>
               <motion.div variants={fadeInUp} className={styles.btnRow}>
-                <button className={styles.addToCart}> Add to cart</button>
+                <button className={styles.addToCart}>Add To Cart</button>
               </motion.div>
             </motion.div>
           </div>

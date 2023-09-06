@@ -34,6 +34,7 @@ interface Song {
   id: string;
   imageUrl: string;
   title: string;
+  releaseDate: string;
 }
 
 interface SongDetailsPageProps {
@@ -91,15 +92,37 @@ export default function SongDetailsPage({ params }: SongDetailsPageProps) {
                 </motion.div>
               </Link>
               <motion.h1 variants={fadeInUp}>{song?.title}</motion.h1>
-              <motion.div variants={fadeInUp} className={styles.qtyPrice}>
-                <div className={styles.qty}>
-                  <div className={styles.minus}>-</div>
-                  <div className={styles.amount}>1</div>
-                  <div className={styles.add}>+</div>
+              <motion.div variants={fadeInUp} className={styles.streaming}>
+                <div>
+                  <p>Song Release</p>
+                  <p>{song?.releaseDate}</p>
                 </div>
               </motion.div>
-              <motion.div variants={fadeInUp} className={styles.btnRow}>
-                <button className={styles.addToCart}> Add to cart</button>
+              <motion.div variants={fadeInUp} className={styles.streaming}>
+                <div>
+                  <h3>Stream</h3>
+                  <Link href="https://spotify.com" target="_blank">
+                    <p>Spotify</p>
+                  </Link>
+                  <Link href="https://music.apple.com/" target="_blank">
+                    <p>Apple Music</p>
+                  </Link>
+                  <Link href="https://pandora.com" target="_blank">
+                    <p>Pandora (LOL)</p>
+                  </Link>
+                </div>
+                <div>
+                  <h3>Buy</h3>
+                  <Link href="https://music.apple.com/" target="_blank">
+                    <p>Apple Music</p>
+                  </Link>
+                  <Link href="https://beatport.com/" target="_blank">
+                    <p>Beatport</p>
+                  </Link>
+                  <Link href="https://bandcamp.com/" target="_blank">
+                    <p>Bandcamp</p>
+                  </Link>
+                </div>
               </motion.div>
             </motion.div>
           </div>
