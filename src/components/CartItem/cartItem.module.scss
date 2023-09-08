@@ -1,0 +1,50 @@
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .details {
+    flex: 1;
+
+    h4 {
+      margin-bottom: 5px;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      span {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  .trash {
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .price {
+    span {
+      font-weight: bold;
+    }
+  }
+}

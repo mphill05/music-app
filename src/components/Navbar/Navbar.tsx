@@ -5,7 +5,11 @@ import Link from 'next/link';
 import styles from './Navbar.module.scss';
 import CartIcon from '../CartIcon/CartIcon';
 
-const Navbar = () => {
+interface NavbarProps {
+  toggleCart: () => void;
+}
+
+const Navbar = ({ toggleCart }: NavbarProps) => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>Logo</div>
@@ -14,14 +18,9 @@ const Navbar = () => {
           <li>
             <Link href="/signin">Sign In</Link>
           </li>
-          <li>
-            <CartIcon
-              toggleCartHidden={() => {
-                console.log('Toggle cart');
-              }}
-              itemCount={5}
-            />
-          </li>
+          <button onClick={toggleCart}>
+            <CartIcon itemCount={5} />
+          </button>
         </ul>
       </div>
     </nav>
