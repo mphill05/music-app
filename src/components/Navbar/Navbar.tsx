@@ -16,7 +16,7 @@ const Navbar = ({ toggleCart }: NavbarProps) => {
       <div className={styles.menuWrapper}>
         <ul className={styles.menu}>
           <li>
-            <Link href="/signin">Sign In</Link>
+            <Link href="/auth">Sign In</Link>
           </li>
           <button onClick={toggleCart}>
             <CartIcon itemCount={5} />
