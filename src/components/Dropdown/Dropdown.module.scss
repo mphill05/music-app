@@ -1,0 +1,18 @@
+.dropdown {
+  position: relative;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  list-style: none;
+  background-color: #fff;
+  // Add other styling as needed
+}
+
+.userName:hover + .menu,
+.menu:hover {
+  display: block;
+}

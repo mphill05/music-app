@@ -19,6 +19,7 @@ export const Cart = ({ isCartOpen, toggleCart, cartItems }: CartProps) => {
     0
   );
   const shipping = 5;
+  const itemCount = 5;
 
   return (
     <>
@@ -27,8 +28,8 @@ export const Cart = ({ isCartOpen, toggleCart, cartItems }: CartProps) => {
           X
         </button>
         <div className={styles.cartHeader}>
-          <span>Cart</span>
-          <span>{cartItems.length} items</span>
+          <h3>Cart</h3>
+          <span className={styles.itemCount}>{itemCount}</span>
         </div>
         <div className={styles.cartItems}>
           {cartItems.map((item, index) => (
@@ -38,12 +39,12 @@ export const Cart = ({ isCartOpen, toggleCart, cartItems }: CartProps) => {
         <div className={styles.checkoutSection}>
           <div className={styles.totalInfo}>
             <div className={styles.shipping}>
-              <span>Shipping</span>
-              <span>$10.00</span>
+              <span className={styles.checkoutText}>Shipping</span>
+              <span className={styles.shippingText}>Calcuated at Checkout</span>
             </div>
             <div className={styles.subtotal}>
-              <span>Subtotal</span>
-              <span>$100.00</span>
+              <span className={styles.checkoutText}>Subtotal</span>
+              <span className={styles.checkoutTotal}>$100.00</span>
             </div>
           </div>
           <button className={styles.checkoutButton}>Checkout</button>

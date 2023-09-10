@@ -35,6 +35,7 @@ interface Song {
   imageUrl: string;
   title: string;
   releaseDate: string;
+  download?: boolean;
 }
 
 interface SongDetailsPageProps {
@@ -124,6 +125,11 @@ export default function SongDetailsPage({ params }: SongDetailsPageProps) {
                   </Link>
                 </div>
               </motion.div>
+              {song?.download && (
+                <motion.div variants={fadeInUp}>
+                  <button className={styles.downloadButton}>Download</button>
+                </motion.div>
+              )}
             </motion.div>
           </div>
         </div>
