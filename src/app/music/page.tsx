@@ -25,14 +25,6 @@ const fadeInUp = {
   },
 };
 
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 interface Song {
   id: string;
   imageUrl: string;
@@ -58,7 +50,7 @@ export default function Music() {
               className={styles.title}
             >
               <div className={styles.musicCardContainer}>
-                {filteredSongs.map((song: Song, index: number) => (
+                {filteredSongs.map((song: Song) => (
                   <Link
                     href={`/music/${song.id}`}
                     key={song.id}

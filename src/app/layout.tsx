@@ -5,6 +5,7 @@ import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
 import { Cart } from '@/components/Cart/cart';
 import { useState } from 'react';
+import '../globals.scss';
 
 export default function RootLayout({
   children,
