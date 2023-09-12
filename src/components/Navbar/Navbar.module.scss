@@ -8,7 +8,7 @@ $white: #fff;
   justify-content: space-between;
   padding: 1rem;
   background-color: transparent;
-  color: $black;
+  color: $white;
   z-index: 1;
   width: 90%;
   margin: auto;
@@ -16,12 +16,13 @@ $white: #fff;
   .logo {
     font-size: 1.5rem;
     text-decoration: none;
-    color: #000;
+    color: $white;
   }
 
   .cartBtn {
     background: none;
     border: none;
+    color: $white;
   }
 
   .menuOverlay {
@@ -52,7 +53,6 @@ $white: #fff;
     position: fixed;
     top: -16px;
     right: 0;
-    // width: 80%;
     height: 100vh;
     background-color: rgba($black, 0.8);
     z-index: 1;
@@ -74,7 +74,7 @@ $white: #fff;
         padding: 0 1rem;
 
         @media (min-width: 769px) {
-          color: $black;
+          color: $white;
         }
       }
     }
