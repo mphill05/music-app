@@ -73,6 +73,7 @@ export default function Store() {
                         key={item.id}
                         src={item.imageUrl}
                         width={250}
+                        alt={item.alt}
                       />
                       <div className={styles.productInfo}>
                         <h4>{item.title}</h4>

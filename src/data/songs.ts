@@ -5,6 +5,7 @@ export const songs = [
     title: 'Song 1',
     releaseDate: 'May 10th, 2021',
     download: true,
+    alt: 'songTitle',
   },
   {
     id: '2',
@@ -12,6 +13,7 @@ export const songs = [
     title: 'Song 2',
     releaseDate: 'May 10th, 2021',
     download: false,
+    alt: 'songTitle',
   },
   {
     id: '3',
@@ -19,6 +21,7 @@ export const songs = [
     title: 'Song 3',
     releaseDate: 'May 10th, 2021',
     download: false,
+    alt: 'songTitle',
   },
   {
     id: '4',
@@ -26,6 +29,7 @@ export const songs = [
     title: 'Song 4',
     releaseDate: 'May 10th, 2021',
     download: false,
+    alt: 'songTitle',
   },
   {
     id: '5',
@@ -33,6 +37,7 @@ export const songs = [
     title: 'Song 5',
     releaseDate: 'May 10th, 2021',
     download: true,
+    description: 'songTitle',
   },
   {
     id: '6',
@@ -40,5 +45,6 @@ export const songs = [
     title: 'Song 6',
     releaseDate: 'May 10th, 2021',
     download: false,
+    alt: 'songTitle',
   },
 ];
