@@ -6,20 +6,31 @@ interface CartProps {
   isCartOpen: boolean;
   toggleCart: any;
   cartItems: Array<{
+    id: string;
     imageUrl: string;
     title: string;
     price: number;
     quantity: number;
   }>;
+  addItem: (item: any) => void;
+  removeItem: (item: any) => void;
+  deleteItem: (item: any) => void;
 }
 
-export const Cart = ({ isCartOpen, toggleCart, cartItems }: CartProps) => {
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
-  const shipping = 5;
-  const itemCount = 5;
+export const Cart = ({
+  isCartOpen,
+  toggleCart,
+  cartItems,
+  addItem,
+  removeItem,
+  deleteItem,
+}: CartProps) => {
+  const subtotal = cartItems.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
+  const itemCount = cartItems.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0);
 
   return (
     <>
@@ -33,7 +44,13 @@ export const Cart = ({ isCartOpen, toggleCart, cartItems }: CartProps) => {
         </div>
         <div className={styles.cartItems}>
           {cartItems.map((item, index) => (
-            <CartItem key={index} item={item} />
+            <CartItem
+              key={item.id}
+              item={item}
+              addItem={addItem}
+              removeItem={removeItem}
+              deleteItem={deleteItem}
+            />
           ))}
         </div>
         <div className={styles.checkoutSection}>
@@ -44,7 +61,9 @@ export const Cart = ({ isCartOpen, toggleCart, cartItems }: CartProps) => {
             </div>
             <div className={styles.subtotal}>
               <span className={styles.checkoutText}>Subtotal</span>
-              <span className={styles.checkoutTotal}>$100.00</span>
+              <span className={styles.checkoutTotal}>
+                ${subtotal.toFixed(2)}
+              </span>
             </div>
           </div>
           <button className={styles.checkoutButton}>Checkout</button>

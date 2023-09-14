@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import Link from 'next/link';
+import { useCart } from '@/context/cartContext';
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const stagger = {
@@ -52,6 +53,7 @@ async function getItem(id: string) {
 export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
   const [item, setItem] = useState<Item | null>(null);
   const [loading, setLoading] = useState(true);
+  const { addItem } = useCart();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,6 +64,19 @@ export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
 
     fetchData();
   }, [params.id]);
+
+  const handleAddToCart = () => {
+    if (item) {
+      addItem({
+        id: item.id,
+        name: item.title,
+        imageUrl: item.imageUrl,
+        title: item.title,
+        price: item.price,
+        quantity: 1,
+      });
+    }
+  };
 
   if (loading || !item) {
     return <div>Loading...</div>;
@@ -116,7 +131,9 @@ export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
                 <h2 className={styles.price}>${item.price}</h2>
               </motion.p>
               <motion.div variants={fadeInUp} className={styles.btnRow}>
-                <button className={styles.addToCart}>Add To Cart</button>
+                <button className={styles.addToCart} onClick={handleAddToCart}>
+                  Add To Cart
+                </button>
               </motion.div>
             </motion.div>
           </div>

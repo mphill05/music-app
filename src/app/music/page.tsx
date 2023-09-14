@@ -29,6 +29,7 @@ interface Song {
   id: string;
   imageUrl: string;
   title: string;
+  alt?: string;
 }
 
 export default function Music() {
@@ -70,6 +71,7 @@ export default function Music() {
                         key={song.id}
                         src={song.imageUrl}
                         width={250}
+                        alt={song.alt}
                       />
                       <div className={styles.musicInfo}>
                         <h4>{song.title}</h4>

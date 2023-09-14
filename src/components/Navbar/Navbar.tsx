@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './Navbar.module.scss';
 import CartIcon from '../CartIcon/CartIcon';
 import { Dropdown } from '../Dropdown/Dropdown';
+import { useCart } from '@/context/cartContext';
 
 interface NavbarProps {
   toggleCart: () => void;
@@ -12,6 +13,7 @@ interface NavbarProps {
 
 const Navbar = ({ toggleCart }: NavbarProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { itemCount } = useCart();
 
   return (
     <nav className={styles.navbar}>
@@ -24,7 +26,7 @@ const Navbar = ({ toggleCart }: NavbarProps) => {
             <Dropdown isLoggedIn={isLoggedIn} />
           </li>
           <button className={styles.cartBtn} onClick={toggleCart}>
-            <CartIcon itemCount={5} />
+            <CartIcon itemCount={itemCount} />
           </button>
         </ul>
       </div>

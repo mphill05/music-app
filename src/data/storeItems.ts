@@ -6,6 +6,7 @@ export const storeItems = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In hac habitasse platea dictumst. Sed ultrices ultricies turpis, quis suscipit massa malesuada non. Nulla facilisi. Quisque euismod, libero eu dignissim lacinia, ante sapien pharetra duis, quis dapibus quam nibh id arcu. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.',
     price: 10,
+    alt: 'item',
   },
   {
     id: '2',
@@ -14,6 +15,7 @@ export const storeItems = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In hac habitasse platea dictumst. Sed ultrices ultricies turpis, quis suscipit massa malesuada non. Nulla facilisi. Quisque euismod, libero eu dignissim lacinia, ante sapien pharetra duis, quis dapibus quam nibh id arcu. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.',
     price: 35,
+    alt: 'item',
   },
   {
     id: '3',
@@ -22,6 +24,7 @@ export const storeItems = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In hac habitasse platea dictumst. Sed ultrices ultricies turpis, quis suscipit massa malesuada non. Nulla facilisi. Quisque euismod, libero eu dignissim lacinia, ante sapien pharetra duis, quis dapibus quam nibh id arcu. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.',
     price: 20,
+    alt: 'item',
   },
   {
     id: '4',
@@ -30,6 +33,7 @@ export const storeItems = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In hac habitasse platea dictumst. Sed ultrices ultricies turpis, quis suscipit massa malesuada non. Nulla facilisi. Quisque euismod, libero eu dignissim lacinia, ante sapien pharetra duis, quis dapibus quam nibh id arcu. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.',
     price: 55,
+    alt: 'item',
   },
   {
     id: '5',
@@ -38,6 +42,7 @@ export const storeItems = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In hac habitasse platea dictumst. Sed ultrices ultricies turpis, quis suscipit massa malesuada non. Nulla facilisi. Quisque euismod, libero eu dignissim lacinia, ante sapien pharetra duis, quis dapibus quam nibh id arcu. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.',
     price: 10.75,
+    alt: 'item',
   },
   {
     id: '6',
@@ -46,5 +51,6 @@ export const storeItems = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In hac habitasse platea dictumst. Sed ultrices ultricies turpis, quis suscipit massa malesuada non. Nulla facilisi. Quisque euismod, libero eu dignissim lacinia, ante sapien pharetra duis, quis dapibus quam nibh id arcu. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.',
     price: 550.25,
+    alt: 'item',
   },
 ];
