@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface CartItem {
   id: string;
@@ -15,6 +15,8 @@ interface CartContextProps {
   removeItem: (id: string) => void;
   deleteItem: (id: string) => void;
   itemCount: number;
+  isCartOpen: boolean;
+  toggleCart: () => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -29,8 +31,14 @@ export const useCart = () => {
 
 const CartProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
 
   const addItem = (newItem: CartItem) => {
+    setIsCartOpen(true);
     if (!newItem.id || !newItem.name || !newItem.price) {
       console.error('Malformed item: ', newItem);
       return;
@@ -71,7 +79,15 @@ const CartProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addItem, removeItem, deleteItem, itemCount }}
+      value={{
+        cart,
+        addItem,
+        removeItem,
+        deleteItem,
+        itemCount,
+        isCartOpen,
+        toggleCart,
+      }}
     >
       {children}
     </CartContext.Provider>

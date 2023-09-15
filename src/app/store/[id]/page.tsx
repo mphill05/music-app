@@ -53,7 +53,7 @@ async function getItem(id: string) {
 export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
   const [item, setItem] = useState<Item | null>(null);
   const [loading, setLoading] = useState(true);
-  const { addItem } = useCart();
+  const { addItem, toggleCart } = useCart();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,6 +66,7 @@ export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
   }, [params.id]);
 
   const handleAddToCart = () => {
+    toggleCart();
     if (item) {
       addItem({
         id: item.id,

@@ -21,12 +21,8 @@ export default function RootLayout({
 }
 
 function LayoutContent({ children }: { children: React.ReactNode }) {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const { cart, addItem, removeItem, deleteItem } = useCart();
-
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
+  const { cart, addItem, removeItem, deleteItem, isCartOpen, toggleCart } =
+    useCart();
 
   return (
     <html lang="en">

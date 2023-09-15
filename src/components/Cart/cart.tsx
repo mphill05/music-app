@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './cart.module.scss';
 import { CartItem } from '../CartItem/cartItem';
 
@@ -32,15 +32,21 @@ export const Cart = ({
     return acc + item.quantity;
   }, 0);
 
+  useEffect(() => {
+    console.log('Is Cart Open - cart.tsx:', isCartOpen);
+  }, [isCartOpen]);
+
   return (
     <>
       <div className={`${styles.cart} ${isCartOpen ? styles.open : ''}`}>
-        <button className={styles.closeButton} onClick={toggleCart}>
-          X
-        </button>
         <div className={styles.cartHeader}>
-          <h3>Cart</h3>
-          <span className={styles.itemCount}>{itemCount}</span>
+          <div className={styles.cartTextAndCount}>
+            <h3>Cart</h3>
+            <span className={styles.itemCount}>{itemCount}</span>
+          </div>
+          <button className={styles.closeButton} onClick={toggleCart}>
+            X
+          </button>
         </div>
         <div className={styles.cartItems}>
           {cartItems.map((item, index) => (
