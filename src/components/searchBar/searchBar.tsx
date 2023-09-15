@@ -35,7 +35,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({ query, setQuery }) => {
 
   return (
     <div className={styles.searchBar} ref={searchBarRef}>
-      <button className={styles.iconButton} onClick={toggleSearchBar}>
+      <button
+        className={`${styles.iconButton} ${isOpen ? styles.active : ''}`}
+        onClick={toggleSearchBar}
+      >
         🔍
       </button>
       <input
@@ -45,6 +48,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({ query, setQuery }) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
+      {isOpen && (
+        <button className={styles.clearButton} onClick={() => setQuery('')}>
+          ✖️
+        </button>
+      )}
     </div>
   );
 };

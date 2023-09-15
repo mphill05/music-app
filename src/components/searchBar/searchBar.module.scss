@@ -3,25 +3,33 @@
   align-items: center;
   width: 90%;
   margin: auto;
+  position: relative;
 }
 
 .iconButton {
   cursor: pointer;
-  background-color: white;
+  background: none;
   border: none;
-  border-radius: 50%;
+  border-radius: 40%;
   padding: 0.5rem;
+  transition: background-color 0.1s ease;
+
+  &.active {
+    background-color: #fff;
+    border-radius: 10px 0 0 10px;
+  }
 }
 
 .input {
   border: none;
   border-bottom: 1px solid black;
-  padding: 0.5rem;
+  padding: 0.7rem;
   width: 0;
   overflow: hidden;
   transition: width 0.3s ease;
   opacity: 0;
-  background-color: transparent;
+  background-color: #fff;
+  opacity: 0;
 
   &:focus {
     outline: none;
@@ -30,5 +38,13 @@
 
 .open {
   opacity: 1;
-  width: 110px;
+  width: 150px;
+}
+
+.clearButton {
+  cursor: pointer;
+  background: #fff;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  padding: 0.5rem;
 }
