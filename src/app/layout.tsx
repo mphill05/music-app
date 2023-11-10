@@ -1,14 +1,15 @@
 'use client';
 
-import { SocialMediaLinks } from '@/components/SocialLinks/SocialLinks';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
+import { SocialMediaLinks } from '@/components/SocialLinks/SocialLinks';
 import { Cart } from '@/components/Cart/cart';
-import { useState } from 'react';
-import '../globals.scss';
 import CartProvider, { useCart } from '@/context/cartContext';
+import AuthProvider from './AuthProvider';
 
-export default function RootLayout({
+import '../globals.scss';
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -25,21 +26,23 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
     useCart();
 
   return (
-    <html lang="en">
-      <body>
-        <Navbar toggleCart={toggleCart} />
-        <SocialMediaLinks />
-        <Cart
-          isCartOpen={isCartOpen}
-          toggleCart={toggleCart}
-          cartItems={cart}
-          addItem={addItem}
-          removeItem={removeItem}
-          deleteItem={deleteItem}
-        />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body>
+          <Navbar toggleCart={toggleCart} />
+          <SocialMediaLinks />
+          <Cart
+            isCartOpen={isCartOpen}
+            toggleCart={toggleCart}
+            cartItems={cart}
+            addItem={addItem}
+            removeItem={removeItem}
+            deleteItem={deleteItem}
+          />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </AuthProvider>
   );
 }

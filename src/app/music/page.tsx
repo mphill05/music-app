@@ -6,24 +6,7 @@ import { useState } from 'react';
 import { SearchBar } from '@/components/searchBar/searchBar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
-let easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp = {
-  initial: {
-    y: 60,
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing },
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
+import Animations from '@/components/Animations/Animations';
 
 interface Song {
   id: string;
@@ -51,32 +34,27 @@ export default function Music() {
               className={styles.title}
             >
               <div className={styles.musicCardContainer}>
-                {filteredSongs.map((song: Song) => (
+                {filteredSongs.map((songs: Song) => (
                   <Link
-                    href={`/music/${song.id}`}
-                    key={song.id}
-                    as={`/music/${song.id}`}
+                    href={`/music/${songs.id}`}
+                    key={songs.id}
+                    as={`/music/${songs.id}`}
                     style={{ textDecoration: 'none' }}
                   >
-                    <motion.div
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`${styles.card} no-underline`}
-                    >
+                    <Animations>
                       <motion.img
                         initial={{ x: 60, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        key={song.id}
-                        src={song.imageUrl}
+                        key={songs.id}
+                        src={songs.imageUrl}
                         width={250}
-                        alt={song.alt}
+                        alt={songs.alt}
                       />
                       <div className={styles.musicInfo}>
-                        <h4>{song.title}</h4>
+                        <h4>{songs.title}</h4>
                       </div>
-                    </motion.div>
+                    </Animations>
                   </Link>
                 ))}
               </div>

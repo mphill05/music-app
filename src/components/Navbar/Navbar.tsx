@@ -12,7 +12,6 @@ interface NavbarProps {
 }
 
 const Navbar = ({ toggleCart }: NavbarProps) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { itemCount } = useCart();
 
   return (
@@ -22,9 +21,7 @@ const Navbar = ({ toggleCart }: NavbarProps) => {
       </Link>
       <div className={styles.menuWrapper}>
         <ul className={styles.menu}>
-          <li>
-            <Dropdown isLoggedIn={isLoggedIn} />
-          </li>
+          <Dropdown />
           <button className={styles.cartBtn} onClick={toggleCart}>
             <CartIcon itemCount={itemCount} />
           </button>

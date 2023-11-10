@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './cart.module.scss';
 import { CartItem } from '../CartItem/cartItem';
 
@@ -31,10 +31,6 @@ export const Cart = ({
   const itemCount = cartItems.reduce((acc, item) => {
     return acc + item.quantity;
   }, 0);
-
-  useEffect(() => {
-    console.log('Is Cart Open - cart.tsx:', isCartOpen);
-  }, [isCartOpen]);
 
   return (
     <>

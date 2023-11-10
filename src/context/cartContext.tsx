@@ -1,4 +1,12 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+'use client';
+
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
 
 interface CartItem {
   id: string;
@@ -33,17 +41,24 @@ const CartProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
-
-  const addItem = (newItem: CartItem) => {
-    setIsCartOpen(true);
-    if (!newItem.id || !newItem.name || !newItem.price) {
-      console.error('Malformed item: ', newItem);
-      return;
+  // Load and save cart to local storage
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
     }
-    setCart((prevItems: CartItem[]) => {
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const toggleCart = useCallback(() => {
+    setIsCartOpen(!isCartOpen);
+  }, [isCartOpen]);
+
+  const addItem = useCallback((newItem: CartItem) => {
+    setCart((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === newItem.id);
       let updatedItems;
       if (existingItem) {
@@ -57,23 +72,23 @@ const CartProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       }
       return updatedItems;
     });
-  };
+  }, []);
 
-  const removeItem = (itemId: string) => {
-    setCart((prevItems: CartItem[]) => {
-      return prevItems.map((item) =>
-        item.id === itemId && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      );
-    });
-  };
-
-  const deleteItem = (itemId: string) => {
+  const removeItem = useCallback((itemId: string) => {
     setCart((prevItems) => {
-      return prevItems.filter((item) => item.id !== itemId);
+      return prevItems
+        .map((item) =>
+          item.id === itemId && item.quantity > 1
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0);
     });
-  };
+  }, []);
+
+  const deleteItem = useCallback((itemId: string) => {
+    setCart((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  }, []);
 
   const itemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
