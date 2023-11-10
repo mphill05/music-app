@@ -2,16 +2,47 @@
   position: relative;
 }
 
+.userName {
+  margin-right: 25px;
+  cursor: pointer;
+}
+
 .menu {
   display: none;
   position: absolute;
   top: 100%;
   right: 0;
   list-style: none;
-  background-color: #fff;
+  background-color: #000;
+  min-height: 100px;
+  width: 100px;
+  padding: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 .userName:hover + .menu,
 .menu:hover {
   display: block;
+}
+
+.menu li {
+  padding: 5px 10px;
+  color: white;
+}
+
+.menu li:hover {
+  background-color: #555;
+}
+
+.authRouteLink {
+  margin-right: 25px;
+}
+
+.signupLoginText {
+  margin: 0 5px;
+
+  &:hover {
+    color: #000;
+  }
 }

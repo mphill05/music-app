@@ -1,25 +1,46 @@
 import NextAuth from 'next-auth/next';
-import type { NextAuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import FacebookProvider from 'next-auth/providers/facebook';
-import EmailProvider from 'next-auth/providers/email';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { compare } from 'bcrypt';
+import { sql } from '@vercel/postgres';
 
-export const authOptions: NextAuthOptions = {
+const handler = NextAuth({
+  session: {
+    strategy: 'jwt',
+  },
+  pages: {
+    signIn: '/login',
+  },
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID!,
-      clientSecret: process.env.GOOGLE_SECRET!,
-    }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_ID!,
-      clientSecret: process.env.FACEBOOK_SECRET!,
-    }),
-    EmailProvider({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM,
+    CredentialsProvider({
+      credentials: {
+        email: {},
+        password: {},
+      },
+      async authorize(credentials, req) {
+        // validate credentials from auth function
+        const response = await sql`
+        SELECT * FROM users WHERE email=${credentials?.email}
+        `;
+        const user = response.rows[0];
+
+        const passwordCorrect = await compare(
+          credentials?.password || '',
+          user.password
+        );
+
+        console.log({ passwordCorrect });
+
+        if (passwordCorrect) {
+          return {
+            id: user.id,
+            email: user.email,
+          };
+        }
+
+        return null;
+      },
     }),
   ],
-};
+});
 
-const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

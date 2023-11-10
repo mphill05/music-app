@@ -1,38 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Card } from '../../components/Card/Card';
 import { storeItems } from '../../data/storeItems';
 import styles from './page.module.scss';
 import { SearchBar } from '@/components/searchBar/searchBar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
-let easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp = {
-  initial: {
-    y: 60,
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing },
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+import { prisma } from '@/lib/db/prisma';
+import Animations from '@/components/Animations/Animations';
 
 export default function Store() {
   const [query, setQuery] = useState('');
@@ -60,12 +35,7 @@ export default function Store() {
                     as={`/store/${item.id}`}
                     style={{ textDecoration: 'none' }}
                   >
-                    <motion.div
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={styles.card}
-                    >
+                    <Animations>
                       <motion.img
                         initial={{ x: 60, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
@@ -79,7 +49,7 @@ export default function Store() {
                         <h4>{item.title}</h4>
                         <span>${item.price}</span>
                       </div>
-                    </motion.div>
+                    </Animations>
                   </Link>
                 ))}
               </div>

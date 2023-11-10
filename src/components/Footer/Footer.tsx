@@ -4,6 +4,7 @@ import { useState } from 'react';
 import styles from './Footer.module.scss';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { footerLinks } from '@/constants';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -53,18 +54,14 @@ const Footer = () => {
           </button>
         </form>
         <ul className={styles.footerMenu}>
-          <li className={`${isActive('/') ? styles.active : ''}`}>
-            <Link href="/">Home</Link>
-          </li>
-          <li className={`${isActive('/music') ? styles.active : ''}`}>
-            <Link href="/music">Music</Link>
-          </li>
-          <li className={`${isActive('/store') ? styles.active : ''}`}>
-            <Link href="/store">Store</Link>
-          </li>
-          <li className={`${isActive('/contact') ? styles.active : ''}`}>
-            <Link href="/contact">Contact</Link>
-          </li>
+          {footerLinks.map((link) => (
+            <li
+              className={`${isActive(link.route) ? styles.active : ''}`}
+              key={link.label}
+            >
+              <Link href={link.route}>{link.label}</Link>
+            </li>
+          ))}
         </ul>
       </div>
     </footer>
