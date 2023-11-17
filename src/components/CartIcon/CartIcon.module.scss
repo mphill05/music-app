@@ -12,15 +12,14 @@
   font-weight: bold;
 }
 
-/* Slide out side menu styles */
 .sideMenu {
   position: fixed;
   top: 0;
-  right: -250px; /* Initially hide the side menu */
+  right: -250px;
   width: 250px;
   height: 100%;
   background-color: #fff;
-  transition: right 0.3s; /* Animation effect */
+  transition: right 0.3s;
 
   &.visible {
     right: 0;
