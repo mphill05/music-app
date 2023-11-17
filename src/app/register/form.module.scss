@@ -57,11 +57,11 @@
       transition: border-color 0.3s;
 
       &:focus {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #351b4f;
 
         & + label {
           opacity: 1;
-          color: #000;
+          color: #351b4f;
           transform: translateY(-40px);
         }
       }
@@ -79,6 +79,7 @@
 
   .space {
     margin-top: 16px;
+    margin-bottom: 20px;
   }
 
   .show {
@@ -141,13 +142,16 @@
     cursor: pointer;
     color: white;
     margin: 0 0 20px 0;
+    justify-content: center;
+    align-items: center;
 
     .facebook,
     .google {
-      width: 100%;
+      width: 15%;
       height: 45px;
       line-height: 45px;
       margin-left: 10px;
+      border-radius: 50px;
 
       &:first-child {
         margin-left: 0;
@@ -165,7 +169,7 @@
 
     .google {
       background: #ea4335;
-      border: 1px solid #3e65cf;
+      border: 1px solid #ea4335;
 
       &:hover {
         background: #ea5335;

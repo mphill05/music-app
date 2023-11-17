@@ -71,13 +71,11 @@ export default function Form() {
           <div className={styles.google}>
             <i className="fab fa-google">
               <FaGoogle />
-              <span>Gmail</span>
             </i>
           </div>
           <div className={styles.facebook}>
             <i className="fab fa-facebook-f">
               <FaFacebook />
-              <span>Facebook</span>
             </i>
           </div>
         </div>
