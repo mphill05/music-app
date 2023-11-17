@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './cartIcon.module.scss';
+import styles from './CartIcon.module.scss';
 import Image from 'next/image';
 
 const CartIcon = ({ itemCount }: { itemCount: number }) => {

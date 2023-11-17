@@ -6,7 +6,6 @@ import styles from './page.module.scss';
 import { SearchBar } from '@/components/searchBar/searchBar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { prisma } from '@/lib/db/prisma';
 import Animations from '@/components/Animations/Animations';
 
 export default function Store() {
