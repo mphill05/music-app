@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { storeItems } from '../../data/storeItems';
 import styles from './page.module.scss';
-import { SearchBar } from '@/components/SearchBar/SearchBar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Animations from '@/components/Animations/Animations';
+import { SearchBar } from '@/components/Search/Search';
 
 export default function Store() {
   const [query, setQuery] = useState('');
