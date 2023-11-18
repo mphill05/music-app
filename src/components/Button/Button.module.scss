@@ -1,0 +1,18 @@
+.buttonStyles {
+  height: 40px;
+  background: #3498db;
+  border: 1px solid #2691d9;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 20px;
+  width: 200px;
+  margin: auto;
+
+  &:hover {
+    background: #2691d9;
+  }
+}

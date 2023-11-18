@@ -1,9 +1,16 @@
+$purple: #351b4f;
+
 .dropdown {
   position: relative;
 }
 
 .userName {
   margin-right: 25px;
+  width: 75px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -13,7 +20,7 @@
   top: 100%;
   right: 0;
   list-style: none;
-  background-color: #000;
+  background-color: #3e61a8;
   min-height: 100px;
   width: 100px;
   padding: 10px;
@@ -32,7 +39,7 @@
 }
 
 .menu li:hover {
-  background-color: #555;
+  font-size: 20px;
 }
 
 .authRouteLink {
@@ -43,6 +50,6 @@
   margin: 0 5px;
 
   &:hover {
-    color: #000;
+    color: $purple;
   }
 }

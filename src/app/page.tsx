@@ -4,15 +4,23 @@ import { songs } from '@/data/songs';
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
 import Link from 'next/link';
+import React from 'react';
+import Button from '@/components/Button/Button';
 
 interface Song {
   id: string;
   imageUrl: string;
   title: string;
+  alt?: string;
 }
 
-export default function HomePage() {
-  const newestSong = songs.find((song) => song.id === '1');
+function HomePage() {
+  const newestSongId = songs[0].id;
+  const newestSong = songs.find((song) => song.id === newestSongId);
+
+  if (!newestSong) {
+    return <></>;
+  }
 
   return (
     <>
@@ -44,9 +52,7 @@ export default function HomePage() {
           </div>
           <div className={styles.buttonContainer}>
             <Link href={`/music/${newestSong.id}`}>
-              <button className={styles.newSongBtn}>
-                Listen to my new song
-              </button>
+              <Button>{newestSong.title}</Button>
             </Link>
           </div>
         </div>
@@ -54,3 +60,5 @@ export default function HomePage() {
     </>
   );
 }
+
+export default React.memo(HomePage);

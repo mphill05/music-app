@@ -1,6 +1,7 @@
 .container {
   width: 100vw;
   margin: 0 auto;
+
   &.center {
     height: 100vh;
     display: flex;
@@ -38,20 +39,10 @@
   }
 }
 
-.downloadButton {
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-}
-
 .fullscreen {
   height: 100vh;
   .product {
+    color: #fff;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -80,7 +71,7 @@
         position: relative;
         .goBack {
           cursor: pointer;
-          color: #282828;
+          color: #fff;
           text-decoration: none;
           text-align: left;
           position: absolute;
@@ -91,6 +82,7 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
+          margin-bottom: 50px;
         }
       }
     }

@@ -3,7 +3,7 @@
 import { songs } from '../../data/songs';
 import styles from './page.module.scss';
 import { useState } from 'react';
-import { SearchBar } from '@/components/searchBar/searchBar';
+import { SearchBar } from '@/components/SearchBar/SearchBar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Animations from '@/components/Animations/Animations';

@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
 
   const { pathname } = req.nextUrl;
 
-  const protectedRoutes = ['/account', '/orders', '/settings'];
+  const protectedRoutes = ['/account', '/orders'];
 
   const isProtectedRoute = protectedRoutes.some((path) =>
     pathname.startsWith(path)
@@ -27,4 +27,4 @@ export async function middleware(req: NextRequest) {
 
 export { default } from 'next-auth/middleware';
 
-export const config = { matcher: ['/account*', '/orders*', '/settings*'] };
+export const config = { matcher: ['/account*', '/orders*'] };

@@ -11,7 +11,7 @@ interface NavbarProps {
   toggleCart: () => void;
 }
 
-const Navbar = ({ toggleCart }: NavbarProps) => {
+const Navbar: React.FC<NavbarProps> = React.memo(({ toggleCart }) => {
   const { itemCount } = useCart();
 
   return (
@@ -22,13 +22,26 @@ const Navbar = ({ toggleCart }: NavbarProps) => {
       <div className={styles.menuWrapper}>
         <ul className={styles.menu}>
           <Dropdown />
-          <button className={styles.cartBtn} onClick={toggleCart}>
-            <CartIcon itemCount={itemCount} />
-          </button>
+          <CartButton toggleCart={toggleCart} itemCount={itemCount} />
         </ul>
       </div>
     </nav>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;
+const CartButton = ({
+  toggleCart,
+  itemCount,
+}: {
+  toggleCart: () => void;
+  itemCount: number;
+}) => {
+  return (
+    <button className={styles.cartBtn} onClick={toggleCart}>
+      <CartIcon itemCount={itemCount} />
+    </button>
+  );
+};

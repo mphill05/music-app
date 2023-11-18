@@ -1,5 +1,6 @@
 $black: #000;
 $white: #fff;
+$purple: #351b4f;
 
 .navbar {
   position: relative;
@@ -72,10 +73,6 @@ $white: #fff;
         font-size: 1rem;
         margin-bottom: 1rem;
         padding: 0 1rem;
-
-        @media (min-width: 769px) {
-          color: $white;
-        }
       }
     }
   }

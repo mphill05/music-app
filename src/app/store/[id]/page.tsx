@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import Link from 'next/link';
 import { useCart } from '@/context/cartContext';
+import Button from '@/components/Button/Button';
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const stagger = {
@@ -132,9 +133,7 @@ export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
                 <h2 className={styles.price}>${item.price}</h2>
               </motion.p>
               <motion.div variants={fadeInUp} className={styles.btnRow}>
-                <button className={styles.addToCart} onClick={handleAddToCart}>
-                  Add To Cart
-                </button>
+                <Button onClick={handleAddToCart}>Add To Cart</Button>
               </motion.div>
             </motion.div>
           </div>

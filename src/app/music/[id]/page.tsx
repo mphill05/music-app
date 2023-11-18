@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import Link from 'next/link';
+import Button from '@/components/Button/Button';
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const stagger = {
@@ -127,7 +128,7 @@ export default function SongDetailsPage({ params }: SongDetailsPageProps) {
               </motion.div>
               {song?.download && (
                 <motion.div variants={fadeInUp}>
-                  <button className={styles.downloadButton}>Download</button>
+                  <Button>Download</Button>
                 </motion.div>
               )}
             </motion.div>

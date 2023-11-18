@@ -1,27 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react'; // Make sure to use useSession
-import Logout from '@/app/logout';
 
 import styles from './Dropdown.module.scss';
+import Logout from '../Logout/Logout';
 
 export const Dropdown = () => {
-  const { data: session } = useSession(); // Correctly use useSession here
+  const { data: session } = useSession();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseEnter = () => {
-    setIsDropdownOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDropdownOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    console.log('Toggling Dropdown'); // Debugging line
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const toggleDropdown = useCallback(() => {
+    setIsDropdownOpen((prevState) => !prevState);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -37,7 +28,7 @@ export const Dropdown = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [dropdownRef]);
+  }, []);
 
   return (
     <>
@@ -45,11 +36,11 @@ export const Dropdown = () => {
         <div
           className={styles.dropdown}
           ref={dropdownRef}
-          onMouseLeave={handleMouseLeave}
+          onMouseLeave={() => setIsDropdownOpen(false)}
         >
           <button
             onClick={toggleDropdown}
-            onMouseEnter={handleMouseEnter}
+            onMouseEnter={() => setIsDropdownOpen(true)}
             className={styles.userName}
           >
             {session.user?.name || 'User'}
