@@ -3,10 +3,10 @@
 import { songs } from '../../data/songs';
 import styles from './page.module.scss';
 import { useMemo, useState } from 'react';
-import { SearchBar } from '@/components/SearchBar/SearchBar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Animations from '@/components/Animations/Animations';
+import { SearchBar } from '@/components/Search/Search';
 
 interface Song {
   id: string;
