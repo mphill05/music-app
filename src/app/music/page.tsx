@@ -2,7 +2,7 @@
 
 import { songs } from '../../data/songs';
 import styles from './page.module.scss';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { SearchBar } from '@/components/SearchBar/SearchBar';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -18,9 +18,11 @@ interface Song {
 export default function Music() {
   const [query, setQuery] = useState('');
 
-  const filteredSongs = songs.filter((song) =>
-    song.title.toLowerCase().includes(query.toLocaleLowerCase())
-  );
+  const filteredSongs = useMemo(() => {
+    return songs.filter((song) =>
+      song.title.toLowerCase().includes(query.toLocaleLowerCase())
+    );
+  }, [query]);
 
   return (
     <div>
