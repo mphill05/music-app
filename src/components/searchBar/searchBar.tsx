@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './searchBar.module.scss';
+import styles from './SearchBar.module.scss';
 
 interface SearchBarProps {
   query: string;

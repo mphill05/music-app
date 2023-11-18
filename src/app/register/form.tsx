@@ -11,6 +11,7 @@ import {
   FaLockOpen,
   FaUser,
 } from 'react-icons/fa';
+import Button from '@/components/Button/Button';
 
 export default function Form() {
   const [passwordType, setPasswordType] = useState('password');
@@ -84,9 +85,9 @@ export default function Form() {
           </div>
           <div className={styles.pass}></div>
           <div className={styles.field}>
-            <button type="submit" value="SIGNUP">
+            <Button type="submit" value="SIGNUP">
               SIGNUP
-            </button>
+            </Button>
           </div>
         </form>
         <div className={styles.login}>Or signup with</div>

@@ -15,24 +15,25 @@
   transition: background-color 0.1s ease;
 
   &.active {
-    background-color: #fff;
+    background-color: #000;
     border-radius: 10px 0 0 10px;
   }
 }
 
 .input {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #fff;
   padding: 0.7rem;
   width: 0;
   overflow: hidden;
   transition: width 0.3s ease;
   opacity: 0;
-  background-color: #fff;
+  background-color: #000;
   opacity: 0;
 
   &:focus {
     outline: none;
+    color: #fff;
   }
 }
 
@@ -43,7 +44,7 @@
 
 .clearButton {
   cursor: pointer;
-  background: #fff;
+  background: #000;
   border: none;
   border-radius: 0 10px 10px 0;
   padding: 0.5rem;

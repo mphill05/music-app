@@ -2,32 +2,39 @@
 
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useReducer, useState } from 'react';
 import styles from './form.module.scss';
 import Link from 'next/link';
 import { FaEnvelope, FaFacebook, FaGoogle, FaLock } from 'react-icons/fa';
+import Button from '@/components/Button/Button';
 
 export default function Form() {
   const router = useRouter();
-  const [passwordType, setPasswordType] = useState('password');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordType, setPasswordType] = useReducer((state) => {
+    return state === 'password' ? 'text' : 'password';
+  }, 'password');
 
   const togglePasswordVisibility = () => {
-    setPasswordType(passwordType === 'password' ? 'text' : 'password');
+    setPasswordType();
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const response = await signIn('credentials', {
-      email: formData.get('email'),
-      password: formData.get('password'),
-      redirect: false,
-    });
+    try {
+      const response = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
 
-    console.log({ response });
-    if (!response?.error) {
-      router.push('/');
-      router.refresh();
+      if (!response?.error) {
+        router.replace('/');
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error here
     }
   };
 
@@ -39,7 +46,14 @@ export default function Form() {
           <span className="fa fa-user">
             <FaEnvelope />
           </span>
-          <input name="email" type="email" placeholder=" " required />
+          <input
+            name="email"
+            type="email"
+            placeholder=" "
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <label htmlFor="email">Email</label>
         </div>
         <div className={`${styles.field} ${styles.space}`}>
@@ -48,23 +62,27 @@ export default function Form() {
           </span>
           <input
             name="password"
-            type="password"
+            type={passwordType}
             className={styles.passKey}
             placeholder=" "
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <label htmlFor="password">Password</label>
-          <span className={styles.show} onClick={togglePasswordVisibility}>
-            {passwordType === 'password' ? 'SHOW' : 'HIDE'}
-          </span>
+          <input
+            type="checkbox"
+            className={styles.show}
+            onChange={togglePasswordVisibility}
+          />
         </div>
         <div className={styles.pass}>
-          <a href="#">Forgot Password?</a>
+          <Link href="#">Forgot Password?</Link>
         </div>
         <div className={styles.field}>
-          <button className={styles.loginBtn} type="submit" value="LOGIN">
+          <Button type="submit" value="LOGIN">
             LOGIN
-          </button>
+          </Button>
         </div>
         <div className={styles.login}>Or login with</div>
         <div className={styles.links}>

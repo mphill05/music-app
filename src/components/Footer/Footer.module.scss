@@ -1,6 +1,7 @@
 $black: #000;
 $white: #fff;
 $red: #ff0000;
+$purple: #351b4f;
 
 .footer {
   position: fixed;
@@ -34,9 +35,9 @@ $red: #ff0000;
 
 .button {
   border-radius: 0 20px 20px 0;
-  border: 1px solid $black;
+  border: 1px solid $purple;
   padding: 0.5rem 1rem;
-  background-color: $black;
+  background-color: $purple;
   color: $white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -69,7 +70,7 @@ $red: #ff0000;
 
     &.active {
       a {
-        color: $black;
+        color: $purple;
       }
     }
   }

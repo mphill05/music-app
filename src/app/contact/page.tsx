@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
+import React from 'react';
 
-export default function ContactPage() {
+function ContactPage() {
   return (
     <div className={styles.contactScreen}>
       <section className={styles.section}>
@@ -67,3 +68,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+export default React.memo(ContactPage);

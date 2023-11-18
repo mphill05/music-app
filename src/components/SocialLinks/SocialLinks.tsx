@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   FaApple,
   FaBandcamp,
@@ -10,61 +11,62 @@ import {
 } from 'react-icons/fa';
 import styles from './SocialLinks.module.scss';
 
+const socialMediaLinks = [
+  {
+    href: 'https://www.instagram.com',
+    icon: FaInstagram,
+    className: styles.instagram,
+  },
+  {
+    href: 'https://www.facebook.com',
+    icon: FaFacebook,
+    className: styles.facebook,
+  },
+  {
+    href: 'https://www.twitter.com',
+    icon: FaTwitter,
+    className: styles.twitter,
+  },
+  {
+    href: 'https://www.soundcloud.com',
+    icon: FaSoundcloud,
+    className: styles.soundcloud,
+  },
+  {
+    href: 'https://www.spotify.com',
+    icon: FaSpotify,
+    className: styles.spotify,
+  },
+  {
+    href: 'https://www.apple.com',
+    icon: FaApple,
+    className: styles.apple,
+  },
+  {
+    href: 'https://www.youtube.com',
+    icon: FaYoutube,
+    className: styles.youtube,
+  },
+  {
+    href: 'https://www.bandcamp.com',
+    icon: FaBandcamp,
+    className: styles.bandcamp,
+  },
+];
+
 export const SocialMediaLinks = () => {
   return (
     <div className={styles.socialMediaContainer}>
-      <a
-        href="https://www.instagram.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaInstagram className={styles.instagram} />
-      </a>
-      <a
-        href="https://www.facebook.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaFacebook className={styles.facebook} />
-      </a>
-      <a
-        href="https://www.twitter.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaTwitter className={styles.twitter} />
-      </a>
-      <a
-        href="https://www.soundcloud.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaSoundcloud className={styles.soundcloud} />
-      </a>
-      <a
-        href="https://www.spotify.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaSpotify className={styles.spotify} />
-      </a>
-      <a href="https://www.apple.com" target="_blank" rel="noopener noreferrer">
-        <FaApple className={styles.apple} />
-      </a>
-      <a
-        href="https://www.youtube.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaYoutube className={styles.youtube} />
-      </a>
-      <a
-        href="https://www.bandcamp.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaBandcamp className={styles.bandcamp} />
-      </a>
+      {socialMediaLinks.map((link, index) => (
+        <a
+          key={index}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <link.icon className={link.className} />
+        </a>
+      ))}
     </div>
   );
 };
