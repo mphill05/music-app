@@ -6,6 +6,7 @@ import styles from './Navbar.module.scss';
 import CartIcon from '../CartIcon/CartIcon';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { useCart } from '@/context/cartContext';
+import { motion } from 'framer-motion';
 
 interface NavbarProps {
   toggleCart: () => void;
@@ -15,7 +16,12 @@ const Navbar: React.FC<NavbarProps> = React.memo(({ toggleCart }) => {
   const { itemCount } = useCart();
 
   return (
-    <nav className={styles.navbar}>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 5 }}
+      transition={{ duration: 0.5 }}
+      className={styles.navbar}
+    >
       <Link href="/" className={styles.logo}>
         <div className={styles.logo}>Logo</div>
       </Link>
@@ -25,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = React.memo(({ toggleCart }) => {
           <CartButton toggleCart={toggleCart} itemCount={itemCount} />
         </ul>
       </div>
-    </nav>
+    </motion.nav>
   );
 });
 

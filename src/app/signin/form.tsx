@@ -77,7 +77,7 @@ export default function Form() {
           />
         </div>
         <div className={styles.pass}>
-          <Link href="#">Forgot Password?</Link>
+          <Link href={'/signin/forgotpassword'}>Forgot Password?</Link>
         </div>
         <div className={styles.field}>
           <Button type="submit" value="LOGIN">

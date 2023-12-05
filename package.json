@@ -2,6 +2,7 @@
   "name": "music-app",
   "version": "0.1.0",
   "dependencies": {
+    "@clerk/nextjs": "^4.27.2",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.506",
     "@types/bcrypt": "^5.0.2",
@@ -15,7 +16,7 @@
     "canvas": "^2.11.2",
     "eslint": "8.44.0",
     "eslint-config-next": "latest",
-    "framer-motion": "^10.16.3",
+    "framer-motion": "^10.16.5",
     "next": "latest",
     "next-auth": "^4.24.4",
     "nodemailer": "^6.9.6",
