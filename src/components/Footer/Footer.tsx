@@ -5,6 +5,7 @@ import styles from './Footer.module.scss';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { footerLinks } from '@/constants';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -34,7 +35,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className={styles.footer}>
+    <motion.footer
+      initial={{ y: 100 }}
+      animate={{ y: 5 }}
+      transition={{ duration: 0.5 }}
+      className={styles.footer}
+    >
       <div className={styles.container}>
         <form onSubmit={handleSubmit}>
           {errorMessage && <span className={styles.error}>{errorMessage}</span>}
@@ -64,7 +70,7 @@ const Footer = () => {
           ))}
         </ul>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

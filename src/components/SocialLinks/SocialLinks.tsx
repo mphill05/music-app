@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import {
   FaApple,
   FaBandcamp,
@@ -56,7 +57,12 @@ const socialMediaLinks = [
 
 export const SocialMediaLinks = () => {
   return (
-    <div className={styles.socialMediaContainer}>
+    <motion.div
+      initial={{ x: 100, y: -200 }}
+      animate={{ x: 5 }}
+      transition={{ duration: 0.5 }}
+      className={styles.socialMediaContainer}
+    >
       {socialMediaLinks.map((link, index) => (
         <a
           key={index}
@@ -67,6 +73,6 @@ export const SocialMediaLinks = () => {
           <link.icon className={link.className} />
         </a>
       ))}
-    </div>
+    </motion.div>
   );
 };

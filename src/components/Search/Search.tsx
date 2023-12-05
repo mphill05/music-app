@@ -15,7 +15,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ query, setQuery }) => {
   };
 
   const handleClickOutside = (e: MouseEvent) => {
-    console.log('test');
     if (
       searchBarRef.current &&
       !searchBarRef.current.contains(e.target as Node)

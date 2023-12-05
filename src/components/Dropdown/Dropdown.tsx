@@ -65,12 +65,8 @@ export const Dropdown = () => {
       )}
       {!session && (
         <div className={styles.authRouteLink}>
-          <Link href="/login" className={styles.signupLoginText}>
+          <Link href="/signin" className={styles.signupLoginText}>
             Login
-          </Link>
-          {' / '}
-          <Link href="/register" className={styles.signupLoginText}>
-            Signup
           </Link>
         </div>
       )}
