@@ -1,6 +1,5 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import React from 'react';
 import styles from './page.module.scss';
 
 const Orders = async () => {

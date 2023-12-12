@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { footerLinks } from '@/constants';
 import { motion } from 'framer-motion';
+import MailingListForm from '../MailingListForm/MailingListForm';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -44,20 +45,7 @@ const Footer = () => {
       <div className={styles.container}>
         <form onSubmit={handleSubmit}>
           {errorMessage && <span className={styles.error}>{errorMessage}</span>}
-          <input
-            type="email"
-            placeholder="Join the mailing list"
-            className={`${styles.input} ${errorMessage && styles.inputError}`}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button
-            type="button"
-            className={styles.button}
-            onClick={handleButtonClick}
-          >
-            Submit
-          </button>
+          <MailingListForm />
         </form>
         <ul className={styles.footerMenu}>
           {footerLinks.map((link) => (

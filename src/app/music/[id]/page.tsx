@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import Link from 'next/link';
 import Button from '@/components/Button/Button';
+import BackBtn from '@/components/BackBtn/BackBtn';
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const stagger = {
@@ -90,7 +91,11 @@ export default function SongDetailsPage({ params }: SongDetailsPageProps) {
             <motion.div variants={stagger} className={styles.inner}>
               <Link href="/music">
                 <motion.div variants={fadeInUp}>
-                  <a className={styles.goBack}>&lt; Back to music</a>
+                  <a className={styles.goBack}>
+                    <div className={styles.goBackContainer}>
+                      <BackBtn /> Back to music
+                    </div>
+                  </a>
                 </motion.div>
               </Link>
               <motion.h1 variants={fadeInUp}>{song?.title}</motion.h1>

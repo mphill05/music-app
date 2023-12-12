@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
 import styles from './cart.module.scss';
 import { CartItem } from '../CartItem/cartItem';
+import Button from '../Button/Button';
 
 interface CartProps {
   isCartOpen: boolean;
@@ -68,7 +68,7 @@ export const Cart = ({
               </span>
             </div>
           </div>
-          <button className={styles.checkoutButton}>Checkout</button>
+          <Button className={styles.checkoutButton}>Checkout</Button>
         </div>
       </div>
       {isCartOpen && (

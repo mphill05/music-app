@@ -4,8 +4,8 @@ import { songs } from '@/data/songs';
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
 import Link from 'next/link';
-import React from 'react';
 import Button from '@/components/Button/Button';
+import { memo } from 'react';
 
 interface Song {
   id: string;
@@ -61,4 +61,4 @@ function HomePage() {
   );
 }
 
-export default React.memo(HomePage);
+export default memo(HomePage);

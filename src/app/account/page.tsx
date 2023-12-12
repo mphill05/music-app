@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './page.module.scss';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
