@@ -1,18 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.scss';
 import CartIcon from '../CartIcon/CartIcon';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { useCart } from '@/context/cartContext';
 import { motion } from 'framer-motion';
+import { memo } from 'react';
 
 interface NavbarProps {
   toggleCart: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = React.memo(({ toggleCart }) => {
+const Navbar = memo(({ toggleCart }: NavbarProps) => {
   const { itemCount } = useCart();
 
   return (

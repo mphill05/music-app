@@ -23,9 +23,10 @@
 
   .field {
     position: relative;
-    height: 45px;
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     span {
       color: #fff;
@@ -38,6 +39,7 @@
       top: 30px;
       left: 40px;
       transition: all 0.3s ease;
+      pointer-events: none;
       opacity: 1;
       transform: translateY(-20px);
       color: #fff;
@@ -57,11 +59,11 @@
       transition: border-color 0.3s;
 
       &:focus {
-        border-bottom: 1px solid #351b4f;
+        border-bottom: 1px solid var(--activeColor);
 
         & + label {
           opacity: 1;
-          color: #351b4f;
+          color: var(--activeColor);
           transform: translateY(-40px);
         }
       }

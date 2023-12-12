@@ -1,0 +1,37 @@
+.inputGroup {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  min-height: 40px;
+  max-width: 160px;
+  padding: 0 1rem;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid var(--activeColor);
+  border-radius: 6px 0 0 6px;
+  background-color: transparent;
+}
+
+.buttonSubmit {
+  min-height: 40px;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: var(--activeColor);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.buttonSubmit:hover {
+  background-color: #5e5dcd;
+}
+
+.input:focus,
+.input:focus-visible {
+  border-color: none;
+  outline: none;
+}

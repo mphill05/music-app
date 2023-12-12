@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
-import React from 'react';
+import { memo } from 'react';
+import Button from '@/components/Button/Button';
 
 function ContactPage() {
   return (
@@ -56,9 +57,9 @@ function ContactPage() {
                 <div className={styles.centeredContent}>
                   <p>Download fonts and photos for show promo.</p>
                   <br />
-                  <a href="/path/to/your/presskit.zip" download>
+                  <Button href="/path/to/your/presskit.zip" download>
                     Download Press Kit
-                  </a>
+                  </Button>
                 </div>
               </motion.div>
             </div>
@@ -69,4 +70,4 @@ function ContactPage() {
   );
 }
 
-export default React.memo(ContactPage);
+export default memo(ContactPage);

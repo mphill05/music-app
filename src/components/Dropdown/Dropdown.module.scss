@@ -44,4 +44,8 @@ $purple: #351b4f;
 
 .authRouteLink {
   margin-right: 25px;
+
+  &:hover {
+    color: var(--hoverColor);
+  }
 }

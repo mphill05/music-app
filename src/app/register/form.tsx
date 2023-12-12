@@ -105,7 +105,7 @@ export default function Form() {
         </div>
         <div className={styles.signup}>
           {'Already have an account? '}
-          <Link href={'/login'}>Login</Link>
+          <Link href={'/signin'}>Login</Link>
         </div>
       </div>
     </form>
