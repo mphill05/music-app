@@ -24,6 +24,7 @@
     "react-dom": "latest",
     "react-icons": "^4.10.1",
     "sass": "^1.63.6",
+    "sonner": "^1.2.4",
     "typescript": "5.1.6"
   },
   "private": true,

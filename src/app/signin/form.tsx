@@ -6,7 +6,7 @@ import { FormEvent, useReducer, useState } from 'react';
 import styles from './form.module.scss';
 import Link from 'next/link';
 import { FaEnvelope, FaFacebook, FaGoogle, FaLock } from 'react-icons/fa';
-import Button from '@/components/Button/Button';
+import Button from '@/components/Buttons/Button';
 
 export default function Form() {
   const router = useRouter();

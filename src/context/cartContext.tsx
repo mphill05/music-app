@@ -58,6 +58,7 @@ const CartProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   }, [isCartOpen]);
 
   const addItem = useCallback((newItem: CartItem) => {
+    console.log('Add item triggered');
     setCart((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === newItem.id);
       let updatedItems;

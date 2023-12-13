@@ -72,9 +72,45 @@
   }
 
   .cartItems {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 20px;
     flex: 1;
     overflow-y: auto;
+    align-items: center;
+
+    &.centerContent {
+      justify-content: center;
+    }
+  }
+
+  .cartItemStyling {
+    align-items: flex-start;
+    width: 100%;
+
+    > * {
+      width: 100%;
+      color: white;
+      border-bottom: 1px solid var(--activeColor);
+    }
+  }
+
+  .emptyCartMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--activeColor);
+    text-align: center;
+    width: 100%;
+  }
+
+  .cartIcon {
+    color: var(--activeColor);
+    margin-bottom: 1rem;
+    height: 4rem;
+    width: 4rem;
   }
 
   .checkoutSection {

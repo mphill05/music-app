@@ -10,8 +10,12 @@ interface ButtonProps {
   className?: any;
 }
 
-const Button = ({ children }: ButtonProps) => {
-  return <button className={styles.buttonStyles}>{children}</button>;
+const Button = ({ children, onClick }: ButtonProps) => {
+  return (
+    <button className={styles.buttonStyles} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

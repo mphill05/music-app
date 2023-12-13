@@ -6,32 +6,10 @@ import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import Link from 'next/link';
 import { useCart } from '@/context/cartContext';
-import Button from '@/components/Button/Button';
-import BackBtn from '@/components/BackBtn/BackBtn';
-
-let easing = [0.6, -0.05, 0.01, 0.99];
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-const fadeInUp = {
-  initial: {
-    y: 60,
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing },
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
+import Button from '@/components/Buttons/Button';
+import BackBtn from '@/components/Buttons/BackBtn/BackBtn';
+import { fadeInUp, stagger } from '@/components/Animations/Animations';
+import { Toaster, toast } from 'sonner';
 
 interface Item {
   id: string;
@@ -68,16 +46,20 @@ export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
   }, [params.id]);
 
   const handleAddToCart = () => {
-    toggleCart();
     if (item) {
-      addItem({
-        id: item.id,
-        name: item.title,
-        imageUrl: item.imageUrl,
-        title: item.title,
-        price: item.price,
-        quantity: 1,
-      });
+      try {
+        addItem({
+          id: item.id,
+          name: item.title,
+          imageUrl: item.imageUrl,
+          title: item.title,
+          price: item.price,
+          quantity: 1,
+        });
+        toast.success('Added item to cart');
+      } catch (error) {
+        toast.error('Error adding item to cart');
+      }
     }
   };
 
@@ -137,6 +119,7 @@ export default function StoreDetailsPage({ params }: StoreDetailsPageProps) {
               </motion.p>
               <motion.div variants={fadeInUp} className={styles.btnRow}>
                 <Button onClick={handleAddToCart}>Add To Cart</Button>
+                <Toaster richColors position="bottom-right" />
               </motion.div>
             </motion.div>
           </div>
