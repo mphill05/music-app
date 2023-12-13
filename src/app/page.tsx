@@ -4,7 +4,7 @@ import { songs } from '@/data/songs';
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
 import Link from 'next/link';
-import Button from '@/components/Button/Button';
+import Button from '@/components/Buttons/Button';
 import { memo } from 'react';
 
 interface Song {

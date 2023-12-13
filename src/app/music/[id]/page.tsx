@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import Link from 'next/link';
-import Button from '@/components/Button/Button';
-import BackBtn from '@/components/BackBtn/BackBtn';
+import Button from '@/components/Buttons/Button';
+import BackBtn from '@/components/Buttons/BackBtn/BackBtn';
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const stagger = {

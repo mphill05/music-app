@@ -1,6 +1,7 @@
 import styles from './cart.module.scss';
 import { CartItem } from '../CartItem/cartItem';
-import Button from '../Button/Button';
+import Button from '../Buttons/Button';
+import { Icons } from '../Icons/Icons';
 
 interface CartProps {
   isCartOpen: boolean;
@@ -44,32 +45,51 @@ export const Cart = ({
             X
           </button>
         </div>
-        <div className={styles.cartItems}>
-          {cartItems.map((item, index) => (
-            <CartItem
-              key={item.id}
-              item={item}
-              addItem={addItem}
-              removeItem={removeItem}
-              deleteItem={deleteItem}
-            />
-          ))}
+        <div
+          className={`${styles.cartItems} ${
+            cartItems.length === 0 ? styles.centerContent : ''
+          }`}
+        >
+          {cartItems.length === 0 ? (
+            <div className={styles.emptyCartMessage}>
+              <Icons.cart className={styles.cartIcon} aria-hidden="true" />
+              <div>Your cart is empty</div>
+            </div>
+          ) : (
+            <div className={styles.cartItemStyling}>
+              {cartItems.map((item, index) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  addItem={addItem}
+                  removeItem={removeItem}
+                  deleteItem={deleteItem}
+                />
+              ))}
+            </div>
+          )}
         </div>
-        <div className={styles.checkoutSection}>
-          <div className={styles.totalInfo}>
-            <div className={styles.shipping}>
-              <span className={styles.checkoutText}>Shipping</span>
-              <span className={styles.shippingText}>Calcuated at Checkout</span>
+        {cartItems.length === 0 ? (
+          <></>
+        ) : (
+          <div className={styles.checkoutSection}>
+            <div className={styles.totalInfo}>
+              <div className={styles.shipping}>
+                <span className={styles.checkoutText}>Shipping</span>
+                <span className={styles.shippingText}>
+                  Calcuated at Checkout
+                </span>
+              </div>
+              <div className={styles.subtotal}>
+                <span className={styles.checkoutText}>Subtotal</span>
+                <span className={styles.checkoutTotal}>
+                  ${subtotal.toFixed(2)}
+                </span>
+              </div>
             </div>
-            <div className={styles.subtotal}>
-              <span className={styles.checkoutText}>Subtotal</span>
-              <span className={styles.checkoutTotal}>
-                ${subtotal.toFixed(2)}
-              </span>
-            </div>
+            <Button className={styles.checkoutButton}>Checkout</Button>
           </div>
-          <Button className={styles.checkoutButton}>Checkout</Button>
-        </div>
+        )}
       </div>
       {isCartOpen && (
         <div className={styles.overlay} onClick={toggleCart}></div>

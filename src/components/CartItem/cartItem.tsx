@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './cartItem.module.scss';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 
 interface CartItemProps {
   item: {
@@ -33,18 +34,18 @@ export const CartItem = ({
               className={styles.removeBtn}
               onClick={() => removeItem(item.id)}
             >
-              -
+              <FaMinus />
             </button>
-            <span>{item.quantity}</span>
+            <span className={styles.quantitySpan}>{item.quantity}</span>
             <button className={styles.addBtn} onClick={() => addItem(item)}>
-              +
+              <FaPlus />
             </button>
           </div>
           <p className={styles.price}>{item?.price?.toFixed(2)}</p>
         </div>
       </div>
       <div className={styles.trash}>
-        <button onClick={() => deleteItem(item.id)}>🗑</button>
+        <button onClick={() => deleteItem(item.id)}>🗑️</button>
       </div>
     </div>
   );

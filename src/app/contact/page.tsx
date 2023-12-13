@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import styles from './page.module.scss';
 import { memo } from 'react';
-import Button from '@/components/Button/Button';
+import Button from '@/components/Buttons/Button';
 
 function ContactPage() {
   return (

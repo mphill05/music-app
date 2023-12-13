@@ -11,7 +11,7 @@ import {
   FaLockOpen,
   FaUser,
 } from 'react-icons/fa';
-import Button from '@/components/Button/Button';
+import Button from '@/components/Buttons/Button';
 
 export default function Form() {
   const [passwordType, setPasswordType] = useState('password');
