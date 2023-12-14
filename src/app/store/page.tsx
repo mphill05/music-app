@@ -15,6 +15,10 @@ export default function Store() {
     item.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   );
 
+  const calculateDelay = (index: number) => ({
+    delay: index * 0.1,
+  });
+
   return (
     <div>
       <SearchBar query={query} setQuery={setQuery} />
@@ -38,7 +42,7 @@ export default function Store() {
                       <motion.img
                         initial={{ x: 60, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.2 }}
+                        transition={calculateDelay(index)}
                         key={item.id}
                         src={item.imageUrl}
                         width={250}
