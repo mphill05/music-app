@@ -9,9 +9,7 @@ const Account = async () => {
   }
   return (
     <div className={styles.accountPage}>
-      <div className={styles.accountInfo}>
-        <p>Welcome back</p>
-      </div>
+      <div className={styles.accountInfo}></div>
     </div>
   );
 };
