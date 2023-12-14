@@ -4,7 +4,7 @@ import { songs } from '../../data/songs';
 import styles from './page.module.scss';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { delay, motion } from 'framer-motion';
 import Animations from '@/components/Animations/Animations';
 import { SearchBar } from '@/components/Search/Search';
 
@@ -24,6 +24,10 @@ export default function Music() {
     );
   }, [query]);
 
+  const calculateDelay = (index: number) => ({
+    delay: index * 0.1,
+  });
+
   return (
     <div>
       <SearchBar query={query} setQuery={setQuery} />
@@ -36,7 +40,7 @@ export default function Music() {
               className={styles.title}
             >
               <div className={styles.musicCardContainer}>
-                {filteredSongs.map((songs: Song) => (
+                {filteredSongs.map((songs: Song, index: number) => (
                   <Link
                     href={`/music/${songs.id}`}
                     key={songs.id}
@@ -47,7 +51,7 @@ export default function Music() {
                       <motion.img
                         initial={{ x: 60, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.2 }}
+                        transition={calculateDelay(index)}
                         key={songs.id}
                         src={songs.imageUrl}
                         width={250}
