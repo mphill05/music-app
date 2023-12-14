@@ -1,75 +1,69 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import { useSession } from 'next-auth/react'; // Make sure to use useSession
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import styles from './Dropdown.module.scss';
+import Link from 'next/link';
 import Logout from '../Logout/Logout';
 
-export const Dropdown = () => {
-  const { data: session } = useSession();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+import styles from './Dropdown.module.scss';
+import LogoutBtn from '../Buttons/Logout/Logout';
 
-  const toggleDropdown = useCallback(() => {
-    setIsDropdownOpen((prevState) => !prevState);
-  }, []);
+interface DropdownProps {
+  userInfo: any;
+}
+
+export const Dropdown = ({ userInfo }: DropdownProps) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const menuRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as HTMLElement)
-      ) {
+    const getClickOutside = (e: MouseEvent) => {
+      if (isDropdownOpen && e.target !== menuRef.current) {
         setIsDropdownOpen(false);
       }
     };
-
-    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('click', getClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('click', getClickOutside);
     };
-  }, []);
+  }, [isDropdownOpen]);
 
   return (
-    <>
-      {session && (
-        <div
-          className={styles.dropdown}
-          ref={dropdownRef}
-          onMouseLeave={() => setIsDropdownOpen(false)}
-        >
-          <button
-            onClick={toggleDropdown}
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            className={styles.userName}
-          >
-            {session.user?.name || 'User'}
-          </button>
+    <li className={styles.userMenuContainer}>
+      <div
+        className={`${
+          isDropdownOpen ? styles.userDataActive : styles.userData
+        }`}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsDropdownOpen(!isDropdownOpen);
+        }}
+      >
+        {userInfo}
+        <AnimatePresence>
           {isDropdownOpen && (
-            <ul className={styles.menu}>
-              <li>
-                <Link href="/account">Account</Link>
-              </li>
-              <li>
-                <Link href="/orders">Orders</Link>
-              </li>
-              <li>
-                <Link href="/settings">Settings</Link>
-              </li>
-              <li>
+            <motion.ul
+              initial={{ opacity: 0, y: '-50%' }}
+              animate={{ opacity: 1, y: '0%' }}
+              exit={{ opacity: 0, y: '-50%', transition: { duration: 0.35 } }}
+              transition={{ type: 'spring', stiffness: 100, duration: 0.75 }}
+              className={`${styles.userMenu} ${styles.userName}`}
+              ref={menuRef}
+            >
+              <div className={styles.userMenuDetails}>
+                <li>{userInfo.user?.name || 'Name'}</li>
+                <li>{userInfo.user?.email || 'email@email.com'}</li>
+              </div>
+              <br />
+              <Link href="/account">Account</Link>
+              <Link href="/orders">Orders</Link>
+              <Link href="/settings">Settings</Link>
+              <a>
                 <Logout />
-              </li>
-            </ul>
+              </a>
+            </motion.ul>
           )}
-        </div>
-      )}
-      {!session && (
-        <div className={styles.authRouteLink}>
-          <Link href="/signin" className={styles.signupLoginText}>
-            Login
-          </Link>
-        </div>
-      )}
-    </>
+        </AnimatePresence>
+      </div>
+    </li>
   );
 };
