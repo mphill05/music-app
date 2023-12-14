@@ -7,12 +7,14 @@ import { Dropdown } from '../Dropdown/Dropdown';
 import { useCart } from '@/context/cartContext';
 import { motion } from 'framer-motion';
 import { memo } from 'react';
+import { useSession } from 'next-auth/react';
 
 interface NavbarProps {
   toggleCart: () => void;
 }
 
-const Navbar = memo(({ toggleCart }: NavbarProps) => {
+const Navbar = memo(({ toggleCart }: { toggleCart: () => void }) => {
+  const { data: session } = useSession();
   const { itemCount } = useCart();
 
   return (
@@ -27,7 +29,7 @@ const Navbar = memo(({ toggleCart }: NavbarProps) => {
       </Link>
       <div className={styles.menuWrapper}>
         <ul className={styles.menu}>
-          <Dropdown />
+          <AuthLink session={session} />
           <CartButton toggleCart={toggleCart} itemCount={itemCount} />
         </ul>
       </div>
@@ -36,6 +38,18 @@ const Navbar = memo(({ toggleCart }: NavbarProps) => {
 });
 
 Navbar.displayName = 'Navbar';
+
+const AuthLink = ({ session }: { session: any }) => {
+  return session ? (
+    <Dropdown userInfo={session.user?.name || 'User'} />
+  ) : (
+    <li className={styles.authRouteLink}>
+      <Link href="/signin" className={styles.signupLoginText}>
+        Login
+      </Link>
+    </li>
+  );
+};
 
 export default Navbar;
 const CartButton = ({

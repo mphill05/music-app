@@ -2,6 +2,7 @@
 
 import { signOut } from 'next-auth/react';
 import styles from './Logout.module.scss';
+import LogoutBtn from '../Buttons/Logout/Logout';
 
 export default function Logout() {
   const handleLogout = () => {
@@ -15,7 +16,7 @@ export default function Logout() {
       aria-label="Logout"
       type="button"
     >
-      Logout
+      <LogoutBtn />
     </button>
   );
 }
